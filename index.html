@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Messages Calculator</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <script async src="https://arc.io/widget.min.js#ySMNiaJa"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="section">
+                <h1 class="is-size-3" style="color: #212529; font-weight: bold;">Messages Calculator</h1>
+                <br />
+                <h2 class="is-size-4" style="color: #212529;">Message Percentage</h2>
+                <p>
+                    Allows you to calculate what percentage your messages make up of the total messages since a specified date (since you started talking on the server).
+                    <br />
+                    Change the example values in the boxes to the message count relevant to you.
+                    <br/>
+                    For the server messages count, make sure that the after date you have selected is the day before the day you sent your first message (you can find out when you sent your first message by when looking at your message count pressing the "Old" filter button).
+                </p>
+                <br/>
+                <form>
+                    <p style="font-weight: bold;">Your Message Count</p>
+                    <img src="/assets/userMessagesTotal.png"/><br/>
+                    <input type="number" min="1" id="userMsgNumb" value="1235" />
+                    <br/>
+                    <br/>
+                    <p style="font-weight: bold;">Server Messages Count (since a specified date)</p>
+                    <img src="/assets/serverMessagesTotal.png"/><br/>
+                    <input type="number" min="1" id="serverMsgNumb" value="274770" />
+                </form>
+                <br />
+                <button onclick="calculateMessagePercentage();">Calculate</button>
+                <br />
+                <br />
+                <p style="font-weight: bold;">Message Percentage Result</p>
+                <p>Your inputted messages count makes up <span id="resultMessagePct" style="font-weight: bold;">??%</span> of the amount of server messages you inputted.</p>
+            </div>
+
+        </div>
+        <script>
+            function calculateMessagePercentage() {
+                const userMsgNumb = document.getElementById("userMsgNumb").value;
+                const serverMsgNumb = document.getElementById("serverMsgNumb").value;
+
+                document.getElementById("resultMessagePct").textContent = (userMsgNumb / serverMsgNumb) * 100 + "%";
+            }
+        </script>
+    </body>
+</html>
